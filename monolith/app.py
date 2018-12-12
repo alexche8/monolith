@@ -11,7 +11,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'ANOTHER ONE'
     app.config['STRAVA_CLIENT_ID'] = os.environ['STRAVA_CLIENT_ID']
     app.config['STRAVA_CLIENT_SECRET'] = os.environ['STRAVA_CLIENT_SECRET']
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/runnerly'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///runnerly.db'
 
     for bp in blueprints:
         app.register_blueprint(bp)
