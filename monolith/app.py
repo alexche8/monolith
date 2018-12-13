@@ -3,14 +3,15 @@ from flask import Flask
 from monolith.database import db, User
 from monolith.views import blueprints
 from monolith.auth import login_manager
+from monolith.settings import STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET
 
 
 def create_app():
     app = Flask(__name__)
     app.config['WTF_CSRF_SECRET_KEY'] = 'A SECRET KEY'
     app.config['SECRET_KEY'] = 'ANOTHER ONE'
-    app.config['STRAVA_CLIENT_ID'] = os.environ['STRAVA_CLIENT_ID']
-    app.config['STRAVA_CLIENT_SECRET'] = os.environ['STRAVA_CLIENT_SECRET']
+    app.config['STRAVA_CLIENT_ID'] = STRAVA_CLIENT_ID
+    app.config['STRAVA_CLIENT_SECRET'] = STRAVA_CLIENT_SECRET
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///runnerly.db'
 
     for bp in blueprints:
